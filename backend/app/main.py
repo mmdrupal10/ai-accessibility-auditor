@@ -2,6 +2,7 @@
 # This is the starting point for the FastAPI backend.
 
 from fastapi import FastAPI
+import os
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from app.routers.health import router as health_router
@@ -29,6 +30,11 @@ app.add_middleware(
 
 # Expose the screenshots folder as static files
 # This allows the frontend to load screenshot images in the browser
+
+# Create screenshots directory if it doesn't exist
+os.makedirs("data/screenshots", exist_ok=True)
+
+# Expose screenshots folder
 app.mount("/screenshots", StaticFiles(directory="data/screenshots"), name="screenshots")
 
 # Include route files
