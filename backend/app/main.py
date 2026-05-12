@@ -26,7 +26,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-)
 
 # Expose the screenshots folder as static files
 # This allows the frontend to load screenshot images in the browser
