@@ -39,7 +39,7 @@ app.mount("/screenshots", StaticFiles(directory="data/screenshots"), name="scree
 
 # Include route files
 app.include_router(health_router)
-app.include_router(scan_router)
+#app.include_router(scan_router)
 
 
 @app.get("/")
