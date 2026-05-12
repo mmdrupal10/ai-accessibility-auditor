@@ -20,12 +20,12 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",
-        "https://your-vercel-url.vercel.app",
+        "https://ai-accessibility-auditor-xi.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+)
 )
 
 # Expose the screenshots folder as static files
