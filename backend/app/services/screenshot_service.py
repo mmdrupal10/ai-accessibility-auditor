@@ -3,7 +3,6 @@
 
 from pathlib import Path
 from urllib.parse import urlparse
-import subprocess
 from playwright.sync_api import sync_playwright
 
 
@@ -39,9 +38,6 @@ def capture_screenshot(url: str, output_folder: str = "data/screenshots") -> str
     filename = make_safe_filename(url)
     file_path = Path(output_folder) / filename
 
-    # Ensure Chromium browser exists on Render
-    subprocess.run(["playwright", "install", "chromium"])
-
     # Launch Playwright browser and capture screenshot
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
@@ -50,13 +46,13 @@ def capture_screenshot(url: str, output_folder: str = "data/screenshots") -> str
             page = browser.new_page(viewport={"width": 1440, "height": 900})
 
             # Open the page and wait for the main HTML to load
-            page.goto(url, wait_until="domcontentloaded", timeout=30000)
+            page.goto(url, timeout=10000)
 
             # Small pause to allow extra rendering
             page.wait_for_timeout(200)
 
             # Save a full-page screenshot
-            page.screenshot(path=str(file_path), full_page=True)
+            page.screenshot(path=str(file_path))
 
         finally:
             browser.close()
