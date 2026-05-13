@@ -50,7 +50,7 @@ def capture_screenshot(url: str, output_folder: str = "data/screenshots") -> str
             page = browser.new_page(viewport={"width": 1440, "height": 900})
 
             # Open the page and wait for the main HTML to load
-            page.goto(url, timeout=10000)
+            page.goto(url, wait_until="domcontentloaded", timeout=20000)
 
             # Small pause to allow extra rendering
             page.wait_for_timeout(200)
