@@ -3,7 +3,11 @@
 
 from pathlib import Path
 from urllib.parse import urlparse
+import subprocess
 from playwright.sync_api import sync_playwright
+
+# Install Chromium once when the service starts
+subprocess.run(["playwright", "install", "chromium"])
 
 
 def make_safe_filename(url: str) -> str:
