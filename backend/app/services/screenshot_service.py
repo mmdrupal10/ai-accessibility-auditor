@@ -53,7 +53,7 @@ def capture_screenshot(url: str, output_folder: str = "data/screenshots") -> str
             page.goto(url, wait_until="domcontentloaded", timeout=30000)
 
             # Small pause to allow extra rendering
-            page.wait_for_timeout(2000)
+            page.wait_for_timeout(200)
 
             # Save a full-page screenshot
             page.screenshot(path=str(file_path), full_page=True)

@@ -353,7 +353,7 @@ def run_accessibility_scan(url):
         # 1. Capture screenshot
         screenshot_path = capture_screenshot(url)
         screenshot_filename = Path(screenshot_path).name
-        screenshot_url = f"http://127.0.0.1:8000/screenshots/{screenshot_filename}"
+        screenshot_url = f"https://ai-accessibility-auditor.onrender.com/screenshots/{screenshot_filename}"
 
         # 2. Run rendered-page contrast detection
         contrast_results = detect_contrast_issues(url)
