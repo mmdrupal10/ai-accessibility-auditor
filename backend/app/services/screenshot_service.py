@@ -9,7 +9,6 @@ from playwright.sync_api import sync_playwright
 # Install Chromium once when the service starts
 subprocess.run(["playwright", "install", "chromium"])
 
-
 def make_safe_filename(url: str) -> str:
     """
     Turn a URL into a safer file name.
